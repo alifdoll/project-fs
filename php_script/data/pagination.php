@@ -1,12 +1,6 @@
 <?php
 
-#$currentPage = if(isset($_GET['page']));
-
 class Pagination{
-
-	public static function getNumRows($movies){
-		return count($movies);
-	}
 
 	public static function getTotalPage($totalData, $dataPerPage){
 		$pageCount = ceil($totalData / $dataPerPage);
