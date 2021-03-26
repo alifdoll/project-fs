@@ -31,10 +31,10 @@ $genres = $movie-> getGenres();
             <hr>
             <div class="caption">
                 <p><span>Genre : </span>
-                    <?php for($i = 1; $i <= 3; $i++):?>
-                    <?php print_r($genres[$i]->getName())?>
-                    <span><?php echo $i==3 ? "." : ","?></span>
-                    <?php endfor;?>
+                    <?php $i=1; foreach($genres as $genre):?>
+                    <?php print_r($genre->getName()); ;?>
+                    <span><?php  echo $i==Genre::getCount() ? "." : ","; $i++;;?></span>
+                    <?php endforeach;?>
                     <!-- ISI GENRE -->
                 </p>
                 <p><span>Score : </span><?=  $movie->getScore(); ?>
