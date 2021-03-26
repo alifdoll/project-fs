@@ -51,6 +51,7 @@ $totalPage = Pagination::getTotalPage($totalData, $dataPerPage);
         <!-- Area input dan Button -->
         <form action="list.php" method="post">
         <div class="searchGrouping">
+        <a href="grid.php"><img src="https://img.icons8.com/metro/26/000000/activity-grid-2.png" class="img-place"></a>
             <div class="space">
                 <!-- cek apakah session ada atau tidak -->
                 <?php if (isset($_SESSION['search'])) : ?>
