@@ -5,6 +5,10 @@ require_once ('php_script/data/data.php');
 
 $id = $_GET['id'];
 $movie = FetchMovie::getDataById($id);
+$genres = [];
+
+$genres = $movie-> getGenres();
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +31,10 @@ $movie = FetchMovie::getDataById($id);
             <hr>
             <div class="caption">
                 <p><span>Genre : </span>
+                    <?php for($i = 1; $i <= 3; $i++):?>
+                    <?php print_r($genres[$i]->getName())?>
+                    <span><?php echo $i==3 ? "." : ","?></span>
+                    <?php endfor;?>
                     <!-- ISI GENRE -->
                 </p>
                 <p><span>Score : </span><?=  $movie->getScore(); ?>
