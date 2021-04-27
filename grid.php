@@ -22,12 +22,13 @@ $currentPage = Pagination::getCurrentPage();
 #variabel untuk data diquery mulai dari index berapa, jangan diubah-ubah.
 $offSet = Pagination::getOffset($dataPerPage, $currentPage);
 
+// $movie_current_page = FetchMovie::getAllData();
 $movies = FetchMovie::getMovieBy($criteria);
 
 $totalData = Movie::getCount();
 
 $movie_current_page = FetchMovie::getDataLimittedSearch($offSet, $dataPerPage, $criteria);
-$totalPage = Pagination::getTotalPage($totalData, $dataPerPage);
+
 
 ?>
 
@@ -38,8 +39,13 @@ $totalPage = Pagination::getTotalPage($totalData, $dataPerPage);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <!-- Source CSS -->
     <link type="text/css" rel="stylesheet" href="css/grid.css">
+
+
+    <!-- Source JS -->
+    
 
     <title>ATIGA MOVIE</title>
 </head>
@@ -66,9 +72,7 @@ $totalPage = Pagination::getTotalPage($totalData, $dataPerPage);
         <!-- End Area input dan Button -->
     </section>
 
-    <section class="container">
-        
-        <div class="content">
+    <div id="movie-container" class="content"  >
             <?php foreach($movie_current_page as $movie):?>
             <!-- Area Grid Movie -->
             <div class="box">
@@ -84,28 +88,19 @@ $totalPage = Pagination::getTotalPage($totalData, $dataPerPage);
             <?php endforeach ?>
         </div>
 
-       
-    </section>
-
     
     <section class="container">
         
         <div class="page-group">
 
             <div class="page">
-              <?php for($i = 1; $i <= $totalPage; $i++) :?>    
-               
-                <?php if( $i == $currentPage): ?>
-                    <a href="?page=<?= $i; ?>" style="font-weight:bold" ><?= $i; ?></a>
-                <?php else: ?>
-                    <a href="?page=<?= $i; ?>"><?= $i; ?></a>
-                <?php endif; ?>
-            <?php endfor; ?>
+                <button id="show-more">Show More</button>
             </div>
 
         </div>
                     
     </section>
-    
+
+    <script src="js/script.js"></script>
 </body>
 </html>
